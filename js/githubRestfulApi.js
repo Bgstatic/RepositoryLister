@@ -4,6 +4,7 @@ var request = new XMLHttpRequest();
 
 // Open a new connection with GET request on the URL endpoint.
 
+// You can change the username section below with yours.
 request.open('GET', 'https://api.github.com/users/Bgstatic/repos', true);
 
 request.onload = function () {
