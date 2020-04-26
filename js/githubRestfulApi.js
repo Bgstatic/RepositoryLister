@@ -9,42 +9,44 @@ request.open('GET', 'https://api.github.com/users/Bgstatic/repos', true);
 
 request.onload = function () {
 
-    // Accessing JSON file.
+  // Accessing JSON file.
 
-    var data = JSON.parse(this.response);
+  var data = JSON.parse(this.response);
+
+  var statusHTML = '';
+
+  // Get indicated information for projects.
+  $.each(data, function (i, status) {
     
-    var statusHTML = '';
-    
-    // Get indicated information for projects.
-    $.each(data, function(i,status){
+    var param = parseInt(i);
+    statusHTML += '<tr>';
+    statusHTML += '<td>' + (param + 1) + '</td>';
+    statusHTML += '<td>' + status.name + '</td>';
+    if (status.description == null) {
 
-      statusHTML += '<tr>';
-      statusHTML += '<td>' + status.name + '</td>';
-      if(status.description == null){
+      statusHTML += '<td>' + "Cannot find project description" + '</td>';
 
-        statusHTML += '<td>' + "Cannot find project description" + '</td>';
+    } else {
 
-      }else{
+      statusHTML += '<td>' + status.description + '</td>';
+    }
 
-        statusHTML += '<td>' + status.description + '</td>';
-      }
-      
-      statusHTML += "<td id=url_id><a href=" + status.html_url + " target = _blank>"+ status.html_url + "</a></td>";
+    statusHTML += "<td id=url_id><a href=" + status.html_url + " target = _blank>" + status.html_url + "</a></td>";
 
-      if(status.language == null){
+    if (status.language == null) {
 
-        statusHTML += '<td>' + "Cannot find project language" + '</td>';
+      statusHTML += '<td>' + "Cannot find project language" + '</td>';
 
-      }else{
+    } else {
 
-        statusHTML += '<td>' + status.language + '</td>';
-      }
-      
-      statusHTML += '</tr>';
+      statusHTML += '<td>' + status.language + '</td>';
+    }
 
-    });
+    statusHTML += '</tr>';
 
-    $('tbody').html(statusHTML);
+  });
+
+  $('tbody').html(statusHTML);
 }
 
 // Send request at the end.
