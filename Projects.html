@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>GitHub Repository Lister</title>
     <link rel="stylesheet" type="text/css" href="reset.css" />
     <link rel="stylesheet" type="text/css" href="style.css" />
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
@@ -12,6 +12,20 @@
 
 
 <body>
+
+    <div class="jumbotron">
+        <h1>GitHub Repository Lister</h1>
+        <p>Lists User Repositories using Github RESTFUL API.
+            <br>
+            <br>
+        </p>
+    </div>
+    <form class="w3-container">
+
+        <label class="w3-text-blue" id="label">GitHub UserName:</label>
+        <input class="w3-input w3-border" type="text" placeholder="Username" id="input">
+        <button class="w3-btn w3-blue" id="button">Get Repositories</button>
+
     <table>
         <thead>
             <tr>
@@ -20,6 +34,9 @@
                 </th>
             </tr>
             <tr>
+                <th>
+                    <h2>Order</h2>
+                </th>
                 <th>
                     <h2>Project Name</h2>
                 </th>
@@ -34,13 +51,15 @@
                 </th>
             </tr>
         </thead>
-        <tbody>
-        </tbody>
+         <tbody id="databody">
+           <!-- Auto data injection here. -->
+         </tbody>   
     </table>
 
     <script src="https://code.jquery.com/jquery-3.5.0.min.js"
         integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
-    <script src="js/githubRestfulApi.js"></script>
+    <script src="js/githubRestfulApi.js"></script> 
+    <script src="js/jquery-3.2.1.js"></script>
 </body>
 
 </html>
